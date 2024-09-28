@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnl38phwlp83e"]
 
-[sub_resource type="Gradient" id="Gradient_m0nbv"]
+[sub_resource type="Gradient" id="Gradient_ci5ns"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_toggl"]
-gradient = SubResource("Gradient_m0nbv")
+gradient = SubResource("Gradient_ci5ns")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.697248, 0.122324)
@@ -79,7 +79,6 @@ polygon = PackedVector2Array(204.198, -244.2, 145.719, -231, 82.4463, -226.6, 20
 [node name="StaticBody2D" type="StaticBody2D" parent="Wing3"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wing3/StaticBody2D"]
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(-96.8264, -33, -23.0083, -125.4, 25.8843, -224.4, 66.1488, -314.6, 141.884, -389.4, 225.289, -411.4, 301.984, -369.6, 331.703, -310.2, 261.719, -279.4, 202.281, -242, 83.405, -147.4, -23.0083, -81.4)
 one_way_collision = true
 one_way_collision_margin = 10.0

@@ -1,4 +1,16 @@
-[gd_scene format=3 uid="uid://vl4a75a8pkib"]
+[gd_scene load_steps=4 format=3 uid="uid://vl4a75a8pkib"]
+
+[sub_resource type="Gradient" id="Gradient_m0nbv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_08b4b"]
+gradient = SubResource("Gradient_m0nbv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.697248, 0.122324)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i1msn"]
+polygon = PackedVector2Array(-0.172019, -1.34678, -0.769507, -0.134161, -0.671916, 0.432615, 0, 0.648922, 0.575928, 0.432615, 0.957195, -1.18892, 0.523561, -0.591496, 0.395016, 0.234687, 0, 0.432615, -0.414325, 0.181367)
 
 [node name="Plane" type="Node2D"]
 
@@ -53,3 +65,27 @@ rotation = 1.57079
 scale = Vector2(0.300101, 0.957763)
 color = Color(0.376658, 0.376658, 0.376658, 1)
 polygon = PackedVector2Array(-133.288, -5.22059, -99.9711, -31.3217, -93.3063, -52.2037, -106.635, -78.3062, -153.285, -96.056, -199.936, -108.585, -266.58, -121.115, -309.898, -136.776, -323.227, -152.438, -303.233, -181.672, -399.867, -175.408, -453.183, -167.055, -496.502, -148.262, -489.838, -111.718, -459.849, -89.792, -399.869, -77.2627, -343.222, -69.9539, -276.578, -58.4687, -253.253, -48.0276, -263.249, -34.4543, -293.24, -19.837, -209.929, -3.13244)
+
+[node name="Flashlight" type="PointLight2D" parent="Head2"]
+unique_name_in_owner = true
+position = Vector2(-406.535, -134.687)
+rotation = 4.71238
+scale = Vector2(20.8428, 44.479)
+color = Color(0.969031, 0.753864, 0, 1)
+range_z_min = -40
+range_z_max = 40
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_08b4b")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Head2/Flashlight"]
+rotation = 2.0944
+occluder = SubResource("OccluderPolygon2D_i1msn")
+
+[node name="Front" type="Polygon2D" parent="Head2"]
+z_index = 50
+position = Vector2(-403.981, -138.663)
+rotation = -1.5708
+scale = Vector2(0.404222, 0.777745)
+color = Color(0.195545, 0.195545, 0.195545, 1)
+polygon = PackedVector2Array(20.3459, -2.73212, 20.346, -17.6621, 16.0001, -34, -15, -44, -41, -22, -41, 18, -15, 41, 12.189, 27.1278)

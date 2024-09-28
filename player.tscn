@@ -47,7 +47,7 @@ shape = SubResource("CapsuleShape2D_b6dpc")
 position = Vector2(0, -141.285)
 
 [node name="Aura" type="PointLight2D" parent="."]
-scale = Vector2(3, 3)
+scale = Vector2(2.09375, 3.5625)
 range_z_min = -40
 range_z_max = 40
 texture = SubResource("GradientTexture2D_mp4ik")
