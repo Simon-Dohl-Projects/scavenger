@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dypfjmxjjxv35"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_6grck"]
+[ext_resource type="Texture2D" uid="uid://3rbixohy3p2r" path="res://icon.svg" id="1_re7o7"]
+
+[sub_resource type="Gradient" id="Gradient_ic73i"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mp4ik"]
+gradient = SubResource("Gradient_ic73i")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_4jx34"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hcadm"]
+gradient = SubResource("Gradient_4jx34")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.697248, 0.122324)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_70kcl"]
+polygon = PackedVector2Array(-5.27934, -9.84199, -0.671916, 0.432615, 0, 0.648922, 0.575928, 0.432615, 4.22347, -9.62569, 0.47994, 0.216308, 0, 0.432615, -0.575928, 0.216308)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtp6k"]
+size = Vector2(104, 126)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 10
+script = ExtResource("1_6grck")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.316785, 0.316785, 0.316785, 1)
+position = Vector2(-64, -64)
+texture = ExtResource("1_re7o7")
+centered = false
+
+[node name="Aura" type="PointLight2D" parent="Sprite"]
+position = Vector2(64, 64)
+scale = Vector2(3, 3)
+texture = SubResource("GradientTexture2D_mp4ik")
+
+[node name="Flashlight" type="PointLight2D" parent="Sprite"]
+unique_name_in_owner = true
+position = Vector2(64, -61)
+scale = Vector2(30, 30)
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_hcadm")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite/Flashlight"]
+rotation = 1.5708
+occluder = SubResource("OccluderPolygon2D_70kcl")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite/Flashlight"]
+position = Vector2(0, -0.0333331)
+scale = Vector2(0.0333333, 0.0333333)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(10, 1.00001, -2, -15, 14, -26, -15, -44, -41, -22, -41, 18, -15, 41, 20, 26, 2, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rtp6k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
