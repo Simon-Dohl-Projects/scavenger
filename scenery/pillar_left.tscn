@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://mcsx6sq7gnr4"]
+
+[ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="1_wpmx5"]
+
+[node name="PillarLeft" type="Sprite2D" groups=["pillar"]]
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("1_wpmx5")

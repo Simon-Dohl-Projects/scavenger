@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://de6gvwitue5l6"]
+
+[ext_resource type="PackedScene" uid="uid://mcsx6sq7gnr4" path="res://scenery/pillar_left.tscn" id="1_vbcpo"]
+
+[node name="TextureRect" type="Sprite2D"]
+
+[node name="PillarLeft" parent="." instance=ExtResource("1_vbcpo")]
+flip_h = true
+flip_v = true

@@ -1,15 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5a11mk33blff"]
+[gd_scene load_steps=22 format=3 uid="uid://b5a11mk33blff"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_7mh5c"]
 [ext_resource type="PackedScene" uid="uid://dypfjmxjjxv35" path="res://player.tscn" id="2_sa1rb"]
+[ext_resource type="PackedScene" uid="uid://bufrhv23idcww" path="res://ui.tscn" id="3_hgmks"]
 [ext_resource type="Shader" path="res://blackwhite.gdshader" id="3_p3awb"]
+[ext_resource type="PackedScene" uid="uid://de6gvwitue5l6" path="res://scenery/pillar_right.tscn" id="5_gpqm0"]
+[ext_resource type="PackedScene" uid="uid://mcsx6sq7gnr4" path="res://scenery/pillar_left.tscn" id="6_6jt84"]
+[ext_resource type="PackedScene" uid="uid://bvlm3rcsexwsv" path="res://scenery/noise_controller.tscn" id="7_rhdqg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6iwmv"]
-shader = ExtResource("3_p3awb")
+[sub_resource type="Gradient" id="Gradient_wj1jn"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0rc5n"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sq873"]
+gradient = SubResource("Gradient_wj1jn")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ijjg"]
-normal = Vector2(1, 0)
+[sub_resource type="Gradient" id="Gradient_oufid"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u22sb"]
+gradient = SubResource("Gradient_oufid")
+
+[sub_resource type="Gradient" id="Gradient_6j8i5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oy56j"]
+gradient = SubResource("Gradient_6j8i5")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n0lpp"]
 noise_type = 3
@@ -21,12 +39,90 @@ width = 2000
 height = 1000
 noise = SubResource("FastNoiseLite_n0lpp")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ntut5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6iwmv"]
+shader = ExtResource("3_p3awb")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ijjg"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0rc5n"]
+
+[sub_resource type="Gradient" id="Gradient_ws5ic"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l1qt4"]
+gradient = SubResource("Gradient_ws5ic")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_php0u"]
+size = Vector2(255.649, 1.08036)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_7mh5c")
 
 [node name="Player" parent="." instance=ExtResource("2_sa1rb")]
-position = Vector2(0, -91)
+position = Vector2(2404, -126)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Sky" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(75.2422, 9542)
+texture = SubResource("GradientTexture1D_sq873")
+
+[node name="Floor" type="Sprite2D" parent="."]
+z_index = 70
+position = Vector2(9.53674e-07, 1380)
+scale = Vector2(75.3516, 2760)
+texture = SubResource("GradientTexture1D_u22sb")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+position = Vector2(-5466, -2420.5)
+scale = Vector2(31.5156, 4841)
+texture = SubResource("GradientTexture1D_oy56j")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(4000, 2000)
+autoscroll = Vector2(4, -2)
+repeat_times = 4
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
+z_index = -10
+offset_right = 2000.0
+offset_bottom = 1000.0
+texture = SubResource("NoiseTexture2D_3wl1e")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="Parallax2D"]
+z_index = -10
+offset_right = 2000.0
+offset_bottom = 1000.0
+scale = Vector2(-1, 1)
+texture = SubResource("NoiseTexture2D_3wl1e")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="Parallax2D"]
+z_index = -10
+offset_right = 2000.0
+offset_bottom = 1000.0
+scale = Vector2(1, -1)
+texture = SubResource("NoiseTexture2D_3wl1e")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="Parallax2D"]
+z_index = -10
+offset_right = 2000.0
+offset_bottom = 1000.0
+scale = Vector2(-1, -1)
+texture = SubResource("NoiseTexture2D_3wl1e")
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("3_hgmks")]
+unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
@@ -39,96 +135,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0, 0, 0, 1)
+[node name="Pillars" type="Node2D" parent="."]
 
-[node name="Sky" type="ColorRect" parent="."]
-visible = false
-offset_left = -10048.0
-offset_top = -5129.0
-offset_right = 10067.0
-offset_bottom = 1844.0
-scale = Vector2(1, 1.36)
+[node name="Back" type="Node2D" parent="Pillars"]
 
-[node name="Floor" type="ColorRect" parent="."]
-offset_left = -9896.0
-offset_right = 9929.0
-offset_bottom = 3817.0
-color = Color(0, 0, 0, 1)
+[node name="PillarRight4" parent="Pillars/Back" instance=ExtResource("5_gpqm0")]
+position = Vector2(-826, -255)
 
-[node name="FloorCollision" type="StaticBody2D" parent="Floor"]
-position = Vector2(9896, 0)
+[node name="PillarRight5" parent="Pillars/Back" instance=ExtResource("5_gpqm0")]
+position = Vector2(313, -262)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/FloorCollision"]
-shape = SubResource("WorldBoundaryShape2D_0rc5n")
+[node name="PillarRight6" parent="Pillars/Back" instance=ExtResource("5_gpqm0")]
+position = Vector2(1798, -92)
 
-[node name="Pillars" type="ColorRect" parent="."]
-offset_left = -551.0
-offset_top = -896.0
-offset_right = -454.0
-offset_bottom = 18.0
-color = Color(0, 0, 0, 1)
+[node name="Front" type="Node2D" parent="Pillars"]
+z_index = 50
 
-[node name="ColorRect" type="ColorRect" parent="Pillars"]
-layout_mode = 0
-offset_left = 1031.0
-offset_top = -3.0
-offset_right = 1128.0
-offset_bottom = 911.0
-color = Color(0, 0, 0, 1)
+[node name="PillarLeft4" parent="Pillars/Front" instance=ExtResource("6_6jt84")]
+position = Vector2(-532, -426)
 
-[node name="ColorRect" type="ColorRect" parent="Pillars/ColorRect"]
-layout_mode = 0
-offset_left = 871.0
-offset_top = 3.0
-offset_right = 968.0
-offset_bottom = 917.0
-color = Color(0, 0, 0, 1)
+[node name="PillarLeft5" parent="Pillars/Front" instance=ExtResource("6_6jt84")]
+position = Vector2(553, -428)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -9859.0
-offset_top = -4981.0
-offset_right = -1432.0
-offset_bottom = 1416.0
-color = Color(0, 0, 0, 1)
+[node name="PillarLeft6" parent="Pillars/Front" instance=ExtResource("6_6jt84")]
+position = Vector2(2053, -201)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="NoiseController" parent="Pillars" instance=ExtResource("7_rhdqg")]
+position = Vector2(1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1432, 3)
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(-1432, 0)
+
+[node name="WorldBorder" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/WorldBorder"]
 shape = SubResource("WorldBoundaryShape2D_0ijjg")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
-repeat_size = Vector2(4000, 2000)
-repeat_times = 4
+[node name="FloorCollision" type="StaticBody2D" parent="Borders"]
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
-z_index = -10
-offset_right = 2000.0
-offset_bottom = 1000.0
-texture = SubResource("NoiseTexture2D_3wl1e")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/FloorCollision"]
+shape = SubResource("WorldBoundaryShape2D_0rc5n")
 
-[node name="TextureRect2" type="TextureRect" parent="Parallax2D"]
-z_index = -10
-offset_right = 2000.0
-offset_bottom = 1000.0
-scale = Vector2(-1, 1)
-texture = SubResource("NoiseTexture2D_3wl1e")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2976, -54)
+scale = Vector2(1.91669, 112)
+texture = SubResource("GradientTexture1D_l1qt4")
 
-[node name="TextureRect3" type="TextureRect" parent="Parallax2D"]
-z_index = -10
-offset_right = 2000.0
-offset_bottom = 1000.0
-scale = Vector2(1, -1)
-texture = SubResource("NoiseTexture2D_3wl1e")
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
 
-[node name="TextureRect4" type="TextureRect" parent="Parallax2D"]
-z_index = -10
-offset_right = 2000.0
-offset_bottom = 1000.0
-scale = Vector2(-1, -1)
-texture = SubResource("NoiseTexture2D_3wl1e")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ntut5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0, 0.0401786)
+shape = SubResource("RectangleShape2D_php0u")

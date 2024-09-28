@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bufrhv23idcww"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_erp4s"]
+
+[sub_resource type="Theme" id="Theme_kvw30"]
+Label/constants/outline_size = 7
+
+[node name="UI" type="CanvasLayer"]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
+script = ExtResource("1_erp4s")
+
+[node name="Timer" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 3
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 100.0
+offset_bottom = 54.0
+theme = SubResource("Theme_kvw30")
+theme_override_font_sizes/font_size = 20

@@ -28,11 +28,11 @@ polygon = PackedVector2Array(-5.27934, -9.84199, -0.671916, 0.432615, 0, 0.64892
 size = Vector2(104, 126)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 10
 script = ExtResource("1_6grck")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 self_modulate = Color(0.316785, 0.316785, 0.316785, 1)
+z_index = 10
 position = Vector2(-64, -64)
 texture = ExtResource("1_re7o7")
 centered = false
@@ -40,12 +40,17 @@ centered = false
 [node name="Aura" type="PointLight2D" parent="Sprite"]
 position = Vector2(64, 64)
 scale = Vector2(3, 3)
+range_z_min = -40
+range_z_max = 40
 texture = SubResource("GradientTexture2D_mp4ik")
 
 [node name="Flashlight" type="PointLight2D" parent="Sprite"]
 unique_name_in_owner = true
 position = Vector2(64, -61)
 scale = Vector2(30, 30)
+color = Color(0.969031, 0.753864, 0, 1)
+range_z_min = -40
+range_z_max = 40
 shadow_enabled = true
 shadow_filter = 1
 texture = SubResource("GradientTexture2D_hcadm")
@@ -64,3 +69,4 @@ polygon = PackedVector2Array(10, 1.00001, -2, -15, 14, -26, -15, -44, -41, -22, 
 shape = SubResource("RectangleShape2D_rtp6k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -141.285)
