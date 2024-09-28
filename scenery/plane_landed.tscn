@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnl38phwlp83e"]
+
+[sub_resource type="Gradient" id="Gradient_m0nbv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_toggl"]
+gradient = SubResource("Gradient_m0nbv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.697248, 0.122324)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wk848"]
+polygon = PackedVector2Array(-0.172019, -1.34678, -0.769507, -0.134161, -0.671916, 0.432615, 0, 0.648922, 0.575928, 0.432615, 0.957195, -1.18892, 0.523561, -0.591496, 0.395016, 0.234687, 0, 0.432615, -0.414325, 0.181367)
+
+[node name="Plane" type="Node2D"]
+
+[node name="Leg2" type="Polygon2D" parent="."]
+position = Vector2(3, 7)
+color = Color(0.223529, 0.223529, 0.223529, 1)
+polygon = PackedVector2Array(-35, -84, -23, -88, -11, -72, 0, -45, 5, -28, 22, -23, 37, -15, 40, -9, 15, -12, -1, -14, -26, -9, -38, -7, -26, -20, -9, -27, -15, -50)
+
+[node name="Body" type="Polygon2D" parent="."]
+position = Vector2(4.0014, -11.9984)
+rotation = 1.57079
+scale = Vector2(0.300101, 0.957763)
+color = Color(0.103744, 0.103744, 0.103744, 1)
+polygon = PackedVector2Array(-489.835, -0.000340926, -549.822, 82.4843, -523.166, 184.806, -393.212, 276.687, -243.263, 308.01, -183.281, 207.777, -183.28, 169.145, -89.9707, 136.777, -29.9905, 88.7484, -66.6444, 19.8378, -89.9697, -8.35286, -159.946, -32.3672, -263.244, -46.9847, -393.206, -37.5869)
+
+[node name="Leg1" type="Polygon2D" parent="."]
+position = Vector2(4.0014, 4.00162)
+rotation = 1.57079
+scale = Vector2(0.300101, 0.957763)
+color = Color(0.223529, 0.223529, 0.223529, 1)
+polygon = PackedVector2Array(-249.917, 98.1452, -86.6383, 105.454, -73.3163, 113.808, -69.9843, 125.293, -49.9913, 136.778, -13.3372, 146.175, -33.3301, 128.426, -36.6552, 114.851, -13.3364, 109.632, -13.3363, 104.411, -43.3194, 91.8807, -43.3193, 77.2633, -13.3293, 63.6901, -56.6481, 68.9105, -69.9834, 77.2647, -69.9836, 88.7498, -83.306, 95.013, -166.611, 93.9688, -246.584, 87.7042)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(4.0014, 11.0016)
+color = Color(0.306923, 0.306923, 0.306923, 1)
+polygon = PackedVector2Array(30, -131, 14, -131, -4, -123, -14, -107, -20, -82, -14, -57, -5, -47, 8, -50, 23, -64, 48, -108, 44, -123)
+
+[node name="Head" type="Polygon2D" parent="."]
+position = Vector2(4.0014, -11.9984)
+rotation = 1.5708
+scale = Vector2(0.300101, 0.957763)
+color = Color(0.376658, 0.376658, 0.376658, 1)
+polygon = PackedVector2Array(-133.288, -5.22059, -99.9711, -31.3217, -93.3063, -52.2037, -106.635, -78.3062, -153.285, -96.056, -199.936, -108.585, -266.58, -121.115, -309.898, -136.776, -323.227, -152.438, -303.233, -181.672, -399.867, -175.408, -453.183, -167.055, -496.502, -148.262, -489.838, -111.718, -459.849, -89.792, -399.869, -77.2627, -343.222, -69.9539, -276.578, -58.4687, -253.253, -48.0276, -263.249, -34.4543, -293.24, -19.837, -209.929, -3.13244)
+
+[node name="Flashlight" type="PointLight2D" parent="Head"]
+unique_name_in_owner = true
+position = Vector2(-406.535, -134.687)
+rotation = 4.71239
+scale = Vector2(20.8428, 44.479)
+color = Color(0.969031, 0.753864, 0, 1)
+range_z_min = -40
+range_z_max = 40
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_toggl")
+metadata/_edit_lock_ = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Head/Flashlight"]
+rotation = 2.0944
+occluder = SubResource("OccluderPolygon2D_wk848")
+
+[node name="Front" type="Polygon2D" parent="Head"]
+z_index = 50
+position = Vector2(-403.981, -138.663)
+rotation = -1.5708
+scale = Vector2(0.404222, 0.777745)
+color = Color(0.195545, 0.195545, 0.195545, 1)
+polygon = PackedVector2Array(20.3459, -2.73212, 20.346, -17.6621, 16.0001, -34, -15, -44, -41, -22, -41, 18, -15, 41, 12.189, 27.1278)
+
+[node name="Wing3" type="Polygon2D" parent="."]
+position = Vector2(-311, 15)
+scale = Vector2(1.0431, 0.454545)
+color = Color(0.223529, 0.223529, 0.223529, 1)
+polygon = PackedVector2Array(204.198, -244.2, 145.719, -231, 82.4463, -226.6, 20.1322, -222.2, -25.8843, -136.4, -96.8264, -33, -23.0083, -81.4, 22.0496, -99, 70.9421, -81.4, 139.008, -83.6, 175.438, -138.6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wing3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wing3/StaticBody2D"]
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(-96.8264, -33, -23.0083, -125.4, 25.8843, -224.4, 66.1488, -314.6, 141.884, -389.4, 225.289, -411.4, 301.984, -369.6, 331.703, -310.2, 261.719, -279.4, 202.281, -242, 83.405, -147.4, -23.0083, -81.4)
+one_way_collision = true
+one_way_collision_margin = 10.0

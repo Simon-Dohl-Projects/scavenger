@@ -2,6 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="1_wpmx5"]
 
-[node name="PillarLeft" type="Sprite2D" groups=["pillar"]]
+[node name="PillarLeft" type="Sprite2D"]
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("1_wpmx5")
