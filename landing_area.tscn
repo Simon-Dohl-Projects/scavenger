@@ -1,14 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://b5a11mk33blff"]
+[gd_scene load_steps=31 format=3 uid="uid://b5a11mk33blff"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_7mh5c"]
-[ext_resource type="PackedScene" uid="uid://dypfjmxjjxv35" path="res://player.tscn" id="2_sa1rb"]
-[ext_resource type="PackedScene" uid="uid://bufrhv23idcww" path="res://ui.tscn" id="3_hgmks"]
-[ext_resource type="Shader" path="res://blackwhite.gdshader" id="3_p3awb"]
-[ext_resource type="PackedScene" uid="uid://de6gvwitue5l6" path="res://scenery/pillar_right.tscn" id="5_gpqm0"]
-[ext_resource type="PackedScene" uid="uid://mcsx6sq7gnr4" path="res://scenery/pillar_left.tscn" id="6_6jt84"]
-[ext_resource type="PackedScene" uid="uid://bvlm3rcsexwsv" path="res://scenery/noise_controller.tscn" id="7_rhdqg"]
-[ext_resource type="PackedScene" uid="uid://cnl38phwlp83e" path="res://scenery/plane_landed.tscn" id="8_48nry"]
-[ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="9_7abjn"]
+[ext_resource type="Script" path="res://landing_area.gd" id="1_mbg5k"]
+[ext_resource type="PackedScene" uid="uid://dypfjmxjjxv35" path="res://player.tscn" id="2_tnscq"]
+[ext_resource type="PackedScene" uid="uid://bufrhv23idcww" path="res://ui.tscn" id="3_7cr0n"]
+[ext_resource type="Shader" path="res://blackwhite.gdshader" id="4_28a21"]
+[ext_resource type="PackedScene" uid="uid://de6gvwitue5l6" path="res://scenery/pillar_right.tscn" id="5_wad7f"]
+[ext_resource type="PackedScene" uid="uid://mcsx6sq7gnr4" path="res://scenery/pillar_left.tscn" id="6_2mrtf"]
+[ext_resource type="PackedScene" uid="uid://bvlm3rcsexwsv" path="res://scenery/noise_controller.tscn" id="7_guofy"]
+[ext_resource type="PackedScene" uid="uid://cnl38phwlp83e" path="res://scenery/plane_landed.tscn" id="8_wivt6"]
+[ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="9_cteqy"]
+[ext_resource type="PackedScene" uid="uid://boyymyyb3pxi2" path="res://jet_boots.tscn" id="10_dld7o"]
+[ext_resource type="Theme" uid="uid://c5ff8onaq0p3m" path="res://text.tres" id="11_r7u35"]
 
 [sub_resource type="Gradient" id="Gradient_wj1jn"]
 offsets = PackedFloat32Array(1)
@@ -28,7 +30,7 @@ height = 1000
 noise = SubResource("FastNoiseLite_n0lpp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6iwmv"]
-shader = ExtResource("3_p3awb")
+shader = ExtResource("4_28a21")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ijjg"]
 normal = Vector2(1, 0)
@@ -72,11 +74,14 @@ size = Vector2(64.0577, 63.9257)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugnv7"]
 size = Vector2(112, 294)
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_7mh5c")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7drw"]
+size = Vector2(486, 42.5)
 
-[node name="Player" parent="." instance=ExtResource("2_sa1rb")]
-position = Vector2(7940, -123)
+[node name="LandingArea" type="Node2D"]
+script = ExtResource("1_mbg5k")
+
+[node name="Player" parent="." instance=ExtResource("2_tnscq")]
+position = Vector2(630, -78)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
@@ -125,7 +130,7 @@ scale = Vector2(-1, -1)
 texture = SubResource("NoiseTexture2D_3wl1e")
 metadata/_edit_lock_ = true
 
-[node name="UI" parent="." instance=ExtResource("3_hgmks")]
+[node name="UI" parent="." instance=ExtResource("3_7cr0n")]
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -143,28 +148,28 @@ grow_vertical = 2
 
 [node name="Back" type="Node2D" parent="Pillars"]
 
-[node name="PillarRight4" parent="Pillars/Back" instance=ExtResource("5_gpqm0")]
+[node name="PillarRight4" parent="Pillars/Back" instance=ExtResource("5_wad7f")]
 position = Vector2(-839, -282)
 
-[node name="PillarRight5" parent="Pillars/Back" instance=ExtResource("5_gpqm0")]
+[node name="PillarRight5" parent="Pillars/Back" instance=ExtResource("5_wad7f")]
 position = Vector2(482, -267)
 
-[node name="PillarRight6" parent="Pillars/Back" instance=ExtResource("5_gpqm0")]
+[node name="PillarRight6" parent="Pillars/Back" instance=ExtResource("5_wad7f")]
 position = Vector2(1798, -92)
 
 [node name="Front" type="Node2D" parent="Pillars"]
 z_index = 50
 
-[node name="PillarLeft4" parent="Pillars/Front" instance=ExtResource("6_6jt84")]
+[node name="PillarLeft4" parent="Pillars/Front" instance=ExtResource("6_2mrtf")]
 position = Vector2(-532, -426)
 
-[node name="PillarLeft5" parent="Pillars/Front" instance=ExtResource("6_6jt84")]
+[node name="PillarLeft5" parent="Pillars/Front" instance=ExtResource("6_2mrtf")]
 position = Vector2(763, -427)
 
-[node name="PillarLeft6" parent="Pillars/Front" instance=ExtResource("6_6jt84")]
+[node name="PillarLeft6" parent="Pillars/Front" instance=ExtResource("6_2mrtf")]
 position = Vector2(2053, -201)
 
-[node name="NoiseController" parent="Pillars" instance=ExtResource("7_rhdqg")]
+[node name="NoiseController" parent="Pillars" instance=ExtResource("7_guofy")]
 position = Vector2(1, 1)
 
 [node name="Borders" type="Node2D" parent="."]
@@ -192,7 +197,7 @@ scale = Vector2(117.617, 2760)
 texture = SubResource("GradientTexture1D_u22sb")
 metadata/_edit_lock_ = true
 
-[node name="Platform" parent="." instance=ExtResource("6_6jt84")]
+[node name="Platform" parent="." instance=ExtResource("6_2mrtf")]
 z_index = 5
 position = Vector2(0, -7)
 rotation = 1.57079
@@ -206,7 +211,12 @@ rotation = -1.57079
 scale = Vector2(1.0441, 3.33221)
 polygon = PackedVector2Array(-267, 0, -238, -16, 237, -15, 258, 0)
 
+[node name="SpawnPlatform" type="Node2D" parent="Platform"]
+unique_name_in_owner = true
+position = Vector2(-249.903, -656.739)
+
 [node name="Obstacles" type="Node2D" parent="."]
+z_index = 70
 position = Vector2(3793.74, -85)
 
 [node name="Sprite2D" type="Sprite2D" parent="Obstacles"]
@@ -252,7 +262,6 @@ texture = SubResource("GradientTexture2D_k3471")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Sprite2D4/StaticBody2D"]
 position = Vector2(0.0463867, 0.332703)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fs3dv")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Obstacles"]
@@ -267,81 +276,132 @@ scale = Vector2(1, 1.00121)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Sprite2D5/StaticBody2D"]
 position = Vector2(3.05176e-05, 0.0401764)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_php0u")
 
-[node name="Plane" parent="." instance=ExtResource("8_48nry")]
+[node name="Plane" parent="." instance=ExtResource("8_wivt6")]
 position = Vector2(88, -13)
 scale = Vector2(2, 2)
 
 [node name="Ruin" type="Node2D" parent="."]
 
-[node name="Ruin" type="Polygon2D" parent="Ruin"]
+[node name="RuinFront" type="Polygon2D" parent="Ruin"]
 z_index = 70
 position = Vector2(-1432, 0)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(12532, -4467, 12500, -3110, 11596, -4001, 11603, -2607, 10732, -2977, 11116, -1963, 10286, -2154, 10726, -1387, 10039, -1500, 10477, -757, 9974, -775, 10273, -289, 10273, 2, 14217, 9, 14217, -3590, 13915, -4728, 13406, -3610)
 
-[node name="Ruin2" type="Polygon2D" parent="Ruin"]
+[node name="RuinBack" type="Polygon2D" parent="Ruin"]
 position = Vector2(-1432, 0)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(12347, -3617, 12035, -3020, 11448, -2917, 11329, -2395, 10889, -2213, 10986, -1695, 10468, -1538, 10656, -1061, 10208, -913, 10430, -572, 10056, -464, 10273, -289, 10274, 2, 14217, 9, 14217, -3590, 13300, -3989, 12952, -3536)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(8861, -144)
-scale = Vector2(0.708324, 0.566406)
-texture = ExtResource("9_7abjn")
-
-[node name="Spawn" type="Node2D" parent="Ruin"]
-position = Vector2(8907, -125)
+[node name="SpawnRuin" type="Node2D" parent="Ruin"]
+unique_name_in_owner = true
+position = Vector2(8970, -127)
 scale = Vector2(0.708324, 0.566406)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(8984, -202)
-scale = Vector2(1.062, 0.849)
-texture = ExtResource("9_7abjn")
+[node name="Collision" type="StaticBody2D" parent="Ruin"]
 
-[node name="Sprite2D3" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(9175, -293)
-scale = Vector2(1.593, 1.274)
-texture = ExtResource("9_7abjn")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(9486, -409)
-scale = Vector2(2.39, 1.911)
-texture = ExtResource("9_7abjn")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(9950, -537)
-scale = Vector2(3.585, 2.867)
-texture = ExtResource("9_7abjn")
-
-[node name="Sprite2D6" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(10792, -774)
-scale = Vector2(5.378, 4.301)
-texture = ExtResource("9_7abjn")
-
-[node name="Sprite2D7" type="Sprite2D" parent="Ruin"]
-z_index = 70
-position = Vector2(12038, -1146)
-scale = Vector2(8.067, 6.452)
-texture = ExtResource("9_7abjn")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Ruin"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ruin/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ruin/Collision"]
 z_index = 70
 position = Vector2(-1432, 0)
 polygon = PackedVector2Array(12532, -4467, 12500, -3110, 11596, -4001, 11603, -2607, 10732, -2977, 11116, -1963, 10286, -2154, 10726, -1387, 10039, -1500, 10477, -757, 9974, -775, 10273, -289, 11653, -290, 11654, 1, 14217, 9, 14217, -3590, 13915, -4728, 13406, -3610)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Entrance" type="Area2D" parent="Ruin"]
 position = Vector2(10162, -144)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ruin/Entrance"]
+z_index = 200
+position = Vector2(4, -2)
 shape = SubResource("RectangleShape2D_ugnv7")
+
+[node name="Pillars" type="Node2D" parent="Ruin"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(8861, -144)
+scale = Vector2(0.708324, 0.566406)
+texture = ExtResource("9_cteqy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(8984, -202)
+scale = Vector2(1.062, 0.849)
+texture = ExtResource("9_cteqy")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(9175, -293)
+scale = Vector2(1.593, 1.274)
+texture = ExtResource("9_cteqy")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(9486, -409)
+scale = Vector2(2.39, 1.911)
+texture = ExtResource("9_cteqy")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(9950, -537)
+scale = Vector2(3.585, 2.867)
+texture = ExtResource("9_cteqy")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(10792, -774)
+scale = Vector2(5.378, 4.301)
+texture = ExtResource("9_cteqy")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Ruin/Pillars"]
+z_index = 70
+position = Vector2(12038, -1146)
+scale = Vector2(8.067, 6.452)
+texture = ExtResource("9_cteqy")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="JetBoots" parent="." instance=ExtResource("10_dld7o")]
+position = Vector2(-208, -351)
+
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="Run" type="Area2D" parent="Hints"]
+position = Vector2(4224, -17)
+
+[node name="Run" type="Label" parent="Hints/Run"]
+unique_name_in_owner = true
+offset_left = -73.0
+offset_top = -272.0
+offset_right = 74.0
+offset_bottom = -249.0
+theme = ExtResource("11_r7u35")
+text = "Press \"Shift\" to run"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/Run"]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_d7drw")
+
+[node name="JetBoots" type="Area2D" parent="Hints"]
+position = Vector2(5628, -29)
+
+[node name="JetBoots" type="Label" parent="Hints/JetBoots"]
+unique_name_in_owner = true
+offset_left = -166.0
+offset_top = -236.0
+offset_right = 157.0
+offset_bottom = -213.0
+theme = ExtResource("11_r7u35")
+text = "Looks like I forgot my jet boots on Vulture"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hints/JetBoots"]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_d7drw")
+
+[connection signal="body_entered" from="Ruin/Entrance" to="." method="_on_entrance_body_entered"]
+[connection signal="body_entered" from="Hints/Run" to="." method="_on_run_body_entered"]
+[connection signal="body_exited" from="Hints/Run" to="." method="_on_run_body_exited"]
+[connection signal="body_entered" from="Hints/JetBoots" to="." method="_on_jet_boots_body_entered"]
+[connection signal="body_exited" from="Hints/JetBoots" to="." method="_on_jet_boots_body_exited"]

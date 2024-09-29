@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://boyymyyb3pxi2"]
+
+[ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="2_ejueh"]
+[ext_resource type="PackedScene" uid="uid://b0df4rsgrbola" path="res://interactable/collectable/collectable_component.tscn" id="3_l1lvj"]
+[ext_resource type="Theme" uid="uid://c5ff8onaq0p3m" path="res://text.tres" id="3_v6bfo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdfer"]
+radius = 28.0
+height = 56.0
+
+[node name="JetBoots" type="Node2D"]
+z_index = 50
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-14, 0)
+texture = ExtResource("2_ejueh")
+polygon = PackedVector2Array(11, 18, 9, -26, 20, -26, 21, -5, 23, 7, 35, 7, 41, 11, 41, 17)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-29, 5)
+texture = ExtResource("2_ejueh")
+polygon = PackedVector2Array(11, 18, 9, -26, 20, -26, 21, -5, 23, 7, 35, 7, 41, 11, 41, 17)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -38.0
+offset_top = -89.0
+offset_right = 38.0
+offset_bottom = -40.0
+theme = ExtResource("3_v6bfo")
+text = "Jet Boots
+E (Collect)
+"
+horizontal_alignment = 1
+
+[node name="CollectableComponent" parent="." node_paths=PackedStringArray("interact_hint") instance=ExtResource("3_l1lvj")]
+interact_hint = NodePath("../Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CapsuleShape2D_tdfer")

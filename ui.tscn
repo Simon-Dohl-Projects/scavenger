@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bufrhv23idcww"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_erp4s"]
-
-[sub_resource type="Theme" id="Theme_kvw30"]
-Label/constants/outline_size = 7
+[ext_resource type="Theme" uid="uid://c5ff8onaq0p3m" path="res://text.tres" id="2_1fjs4"]
 
 [node name="UI" type="CanvasLayer"]
 process_thread_group = 2
@@ -18,5 +16,5 @@ offset_left = 14.0
 offset_top = 12.0
 offset_right = 100.0
 offset_bottom = 54.0
-theme = SubResource("Theme_kvw30")
+theme = ExtResource("2_1fjs4")
 theme_override_font_sizes/font_size = 20
