@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyjvugqw3bid5"]
+
+[ext_resource type="Script" path="res://menus/main_menu/main_menu.gd" id="1_8v261"]
+[ext_resource type="PackedScene" uid="uid://bnl4aymwagsqa" path="res://menus/menu_template.tscn" id="2_0es5b"]
+[ext_resource type="Theme" uid="uid://bniwcx6k6wrx7" path="res://menus/menu.tres" id="3_7uf8d"]
+[ext_resource type="PackedScene" uid="uid://ga63x4i2ugw4" path="res://menus/button.tscn" id="3_tc1ot"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8v261")
+
+[node name="MenuTemplate" parent="." instance=ExtResource("2_0es5b")]
+layout_mode = 1
+
+[node name="Label" parent="MenuTemplate/VBoxContainer" index="0"]
+theme = ExtResource("3_7uf8d")
+text = "
+
+
+"
+
+[node name="Start" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="0" instance=ExtResource("3_tc1ot")]
+layout_mode = 2
+text = "Start"
+script = null
+
+[node name="Delete Save" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="1" instance=ExtResource("3_tc1ot")]
+layout_mode = 2
+text = "New Game"
+script = null
+
+[node name="Options" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="2" instance=ExtResource("3_tc1ot")]
+visible = false
+layout_mode = 2
+text = "Options"
+script = null
+
+[node name="Quit" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="3" instance=ExtResource("3_tc1ot")]
+layout_mode = 2
+text = "Quit
+"
+script = null
+
+[connection signal="pressed" from="MenuTemplate/VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MenuTemplate/VBoxContainer/VBoxContainer/Delete Save" to="." method="_on_delete_save_pressed"]
+[connection signal="pressed" from="MenuTemplate/VBoxContainer/VBoxContainer/Options" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="MenuTemplate/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="MenuTemplate"]

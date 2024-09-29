@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfghp8dg5oc4g"]
+[gd_scene load_steps=6 format=3 uid="uid://cfghp8dg5oc4g"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_ikhoi"]
 [ext_resource type="PackedScene" uid="uid://dypfjmxjjxv35" path="res://player.tscn" id="2_h5wom"]
+[ext_resource type="PackedScene" uid="uid://bufrhv23idcww" path="res://ui.tscn" id="3_44snu"]
+[ext_resource type="Shader" path="res://blackwhite.gdshader" id="4_06533"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40b6t"]
+shader = ExtResource("4_06533")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ikhoi")
 
 [node name="Player" parent="." instance=ExtResource("2_h5wom")]
-position = Vector2(630, -78)
+unique_name_in_owner = true
+
+[node name="UI" parent="." instance=ExtResource("3_44snu")]
+unique_name_in_owner = true
+
+[node name="Filter" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="BlackWhiteFilter" type="ColorRect" parent="Filter"]
+material = SubResource("ShaderMaterial_40b6t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

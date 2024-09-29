@@ -8,7 +8,7 @@
 radius = 28.0
 height = 56.0
 
-[node name="JetBoots" type="Node2D"]
+[node name="JetBoots" type="Node2D" groups=["JetBoots"]]
 z_index = 50
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

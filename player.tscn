@@ -41,6 +41,7 @@ shape = SubResource("CapsuleShape2D_b6dpc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -141.285)
+zoom = Vector2(0.655, 0.655)
 
 [node name="Aura" type="PointLight2D" parent="."]
 scale = Vector2(2.09375, 3.5625)
@@ -95,6 +96,7 @@ z_index = 20
 [node name="Polygon2D2" type="Polygon2D" parent="Sprite"]
 position = Vector2(4, -2)
 color = Color(0.0415072, 0.0415072, 0.0415072, 1)
+antialiased = true
 polygon = PackedVector2Array(-36, 46, -28, 19, -23, -6, -21, -24, -13, -34, -17, -46, -16, -60, -9, -65, 5, -66, 15, -62, 16, -50, 13, -38, 7, -30, 12, -21, 13, -11, 13, -4, 14, 15, 17, 40, 21, 65, -43, 65)
 
 [node name="Polygon2D" type="Polygon2D" parent="Sprite"]

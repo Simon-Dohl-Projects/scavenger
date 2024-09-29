@@ -59,10 +59,11 @@ func _input(event: InputEvent) -> void:
 			space_timer.start()
 	if event.is_action_pressed("e"):
 		var collected = interactor.interact()
-		if collected != null:
-			match collected:
-				"JetBoots": jet = true
-				_: print(str(collected) + " has no functionality")
+		if collected != null and collected is Array:
+			for group in collected:
+				match group:
+					"JetBoots": jet = true
+					_: print(str(collected) + " has no functionality")
 
 func jump() -> bool:
 	coyote = false

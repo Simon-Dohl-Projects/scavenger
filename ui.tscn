@@ -11,10 +11,9 @@ script = ExtResource("1_erp4s")
 
 [node name="Timer" type="Label" parent="."]
 unique_name_in_owner = true
-texture_filter = 3
 offset_left = 14.0
 offset_top = 12.0
-offset_right = 100.0
-offset_bottom = 54.0
+offset_right = 62.0
+offset_bottom = 40.0
 theme = ExtResource("2_1fjs4")
-theme_override_font_sizes/font_size = 20
+text = "Time"
