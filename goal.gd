@@ -1,4 +1,12 @@
-extends Node2D
+extends Interactable
 
-func _on_interactable_interacted(interactor: Node) -> void:
-	Globals.victory.emit()
+func _ready() -> void:
+	visible = false
+
+func _on_interacted(interactor: Node) -> void:
+	if interactor is Player:
+		if interactor.artifact: Globals.victory.emit()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		if body.artifact: visible = true

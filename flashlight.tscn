@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddkbjim6y7t3c"]
+
+[ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="1_d8pnw"]
+
+[sub_resource type="Gradient" id="Gradient_ci5ns"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ec78g"]
+gradient = SubResource("Gradient_ci5ns")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.697248, 0.122324)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jpgqe"]
+polygon = PackedVector2Array(-0.172019, -1.34678, -0.746302, -1.19866, -0.910996, 0.0261268, -0.546738, 0.640697, 0.197678, 0.769671, 0.736247, 0.303023, 1.06245, -0.878484, 0.957195, -1.18892, 0.523561, -0.591496, 0.395016, 0.234687, 0, 0.432615, -0.414325, 0.181367)
+
+[node name="Flashlight" type="PointLight2D"]
+rotation = 1.57079
+scale = Vector2(88.1146, 107.651)
+energy = 2.0
+range_z_min = -40
+range_z_max = 40
+shadow_enabled = true
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_ec78g")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+rotation = 1.309
+occluder = SubResource("OccluderPolygon2D_jpgqe")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+texture = ExtResource("1_d8pnw")
+polygon = PackedVector2Array(-0.783074, 0.427303, -0.0794488, 0.89177, 1.18027, 0.817463, 1.50939, 0.538786, 1.58884, -0.250802, 1.02141, -1.13329, -0.317761, -0.928929, -0.86251, -0.399443)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D/StaticBody2D"]
+polygon = PackedVector2Array(-0.783074, 0.427303, -0.0794488, 0.89177, 1.18027, 0.817463, 1.50939, 0.538786, 1.58884, -0.250802, 1.02141, -1.13329, -0.317761, -0.928929, -0.86251, -0.399443)

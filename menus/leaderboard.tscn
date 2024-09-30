@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://b432cuu2qrepw"]
+
+[ext_resource type="Script" path="res://menus/leaderboard.gd" id="1_75oun"]
+[ext_resource type="PackedScene" uid="uid://bnl4aymwagsqa" path="res://menus/menu_template.tscn" id="1_182bc"]
+[ext_resource type="Theme" uid="uid://c5ff8onaq0p3m" path="res://text.tres" id="3_lv8ec"]
+[ext_resource type="PackedScene" uid="uid://ga63x4i2ugw4" path="res://menus/button.tscn" id="4_tli8x"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_75oun")
+
+[node name="MenuTemplate" parent="." instance=ExtResource("1_182bc")]
+layout_mode = 1
+
+[node name="Label" parent="MenuTemplate/VBoxContainer" index="0"]
+text = "Leaderboard"
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuTemplate/VBoxContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Table" type="GridContainer" parent="MenuTemplate/VBoxContainer/VBoxContainer/CenterContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="Name" type="Label" parent="MenuTemplate/VBoxContainer/VBoxContainer/CenterContainer/MarginContainer/Table"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_lv8ec")
+text = "Name"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="MenuTemplate/VBoxContainer/VBoxContainer/CenterContainer/MarginContainer/Table"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_lv8ec")
+text = "Time
+"
+horizontal_alignment = 1
+
+[node name="Day" type="Label" parent="MenuTemplate/VBoxContainer/VBoxContainer/CenterContainer/MarginContainer/Table"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_lv8ec")
+text = "Day"
+horizontal_alignment = 1
+
+[node name="Button" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="1" instance=ExtResource("4_tli8x")]
+layout_mode = 2
+text = "Back to Menu"
+
+[connection signal="draw" from="MenuTemplate/VBoxContainer/VBoxContainer/Button" to="." method="update"]
+[connection signal="pressed" from="MenuTemplate/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="visibility_changed" from="MenuTemplate/VBoxContainer/VBoxContainer/Button" to="." method="update"]
+
+[editable path="MenuTemplate"]

@@ -1,10 +1,12 @@
-extends Node2D
+class_name World extends Node2D
+
+signal esc
 
 @onready var landing: Landing = preload("res://level/landing_area.tscn").instantiate()
 @onready var ruin: Ruin = preload("res://level/ruin_interior.tscn").instantiate()
 
 @onready var ui: UI = %UI
-@onready var player: CharacterBody2D = %Player
+@onready var player: Player = %Player
 
 func _ready() -> void:
 	landing.ruin_entered.connect(enter_ruin)
@@ -26,3 +28,6 @@ func exit_to_landing() -> void:
 	call_deferred("remove_child", ruin)
 	call_deferred("add_child", landing)
 	move_player(landing.spawn_ruin)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc"): esc.emit()

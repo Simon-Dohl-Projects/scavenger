@@ -4,6 +4,7 @@ const BASE_SPEED: float = 300.0
 const JUMP_VELOCITY: float = -800.0
 
 @export var jet: bool = false
+@export var artifact: bool = false
 
 var speed_modifier: float = 1
 var speed: float:
@@ -20,6 +21,7 @@ var space_pressed: bool = false
 @onready var sprite: Node2D = %Sprite
 @onready var interactor: InteractComponent = %InteractComponent
 @onready var jet_effect: CPUParticles2D = %JetEffect
+@onready var hitbox: CollisionShape2D = %Hitbox
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and jumps_left > 0 and coyote == false:
@@ -63,6 +65,7 @@ func _input(event: InputEvent) -> void:
 			for group in collected:
 				match group:
 					"JetBoots": jet = true
+					"Artifact": artifact = true
 					_: print(str(collected) + " has no functionality")
 
 func jump() -> bool:

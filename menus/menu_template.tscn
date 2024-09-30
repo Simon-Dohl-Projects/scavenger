@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnl4aymwagsqa"]
+[gd_scene load_steps=3 format=3 uid="uid://bnl4aymwagsqa"]
+
+[ext_resource type="Theme" uid="uid://bniwcx6k6wrx7" path="res://menus/menu.tres" id="1_or1fu"]
 
 [sub_resource type="SystemFont" id="SystemFont_q56rt"]
 subpixel_positioning = 0
@@ -20,6 +22,7 @@ theme_override_constants/separation = 65
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_or1fu")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_q56rt")

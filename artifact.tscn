@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3h7tw4m71xg2"]
+
+[ext_resource type="Texture2D" uid="uid://b1dwsb0ttb2w4" path="res://scenery/pillar.tres" id="1_ekqtm"]
+
+[node name="Artifact" type="Polygon2D"]
+position = Vector2(6420, -4085)
+texture = ExtResource("1_ekqtm")
+polygon = PackedVector2Array(163, 201, 117, 197, 103, 175, 146, 165, 155, 154, 77, 154, 66, 114, 79, 120, 79, 108, 157, 108, 157, 99, 46, 98, 46, 227, 153, 227, 162, 219)

@@ -4,6 +4,12 @@ class_name UI extends CanvasLayer
 var time: float = 0
 var minutes: int = 0
 
+func _ready() -> void:
+	Globals.victory.connect(set_global_time)
+
+func set_global_time() -> void:
+	Globals.seconds = time + minutes*60
+
 func start_timer() -> void:
 	time = 0
 	minutes = 0

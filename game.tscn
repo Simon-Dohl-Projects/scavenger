@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ditbmwt3b7822"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_57836"]
+[ext_resource type="PackedScene" uid="uid://ydfb5feunofa" path="res://menus/menu/menu.tscn" id="1_ate1t"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_57836")
+
+[node name="Menu" parent="." instance=ExtResource("1_ate1t")]
+unique_name_in_owner = true
+
+[connection signal="start_pressed" from="Menu" to="." method="_on_menu_start_pressed"]

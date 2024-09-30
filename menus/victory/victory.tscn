@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://jfq7dfysa03y"]
+
+[ext_resource type="PackedScene" uid="uid://bnl4aymwagsqa" path="res://menus/menu_template.tscn" id="1_3xpgx"]
+[ext_resource type="Script" path="res://menus/victory/victory.gd" id="1_qs5gx"]
+[ext_resource type="Theme" uid="uid://c5ff8onaq0p3m" path="res://text.tres" id="3_60cry"]
+[ext_resource type="PackedScene" uid="uid://ga63x4i2ugw4" path="res://menus/button.tscn" id="3_ls0xm"]
+[ext_resource type="PackedScene" uid="uid://vl4a75a8pkib" path="res://scenery/plane_fly.tscn" id="5_lyu0i"]
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qs5gx")
+
+[node name="MenuTemplate" parent="." instance=ExtResource("1_3xpgx")]
+layout_mode = 1
+
+[node name="Label" parent="MenuTemplate/VBoxContainer" index="0"]
+text = "Game Completed"
+
+[node name="CompletionTime" type="Label" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_60cry")
+text = "You should not see this"
+horizontal_alignment = 1
+
+[node name="Exit" parent="MenuTemplate/VBoxContainer/VBoxContainer" index="1" instance=ExtResource("3_ls0xm")]
+layout_mode = 2
+text = "Return to menu
+"
+
+[node name="Plane" parent="." instance=ExtResource("5_lyu0i")]
+position = Vector2(616, 636)
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MenuTemplate/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="MenuTemplate"]

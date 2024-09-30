@@ -16,13 +16,13 @@ func _on_entrance_body_entered(body: Node2D) -> void:
 	if body is Player: ruin_entered.emit()
 
 func _on_run_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D: run_hint.visible = true
+	if body is Player: run_hint.visible = true
 
 func _on_run_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D: run_hint.visible = false
+	if body is Player: run_hint.visible = false
 
 func _on_jet_boots_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D and body.jet == false: jetboots_hint.visible = true
+	if body is Player and body.jet == false: jetboots_hint.visible = true
 
 func _on_jet_boots_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D: jetboots_hint.visible = false
+	if body is Player: jetboots_hint.visible = false
